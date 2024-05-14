@@ -1,0 +1,58 @@
+<UI>:
+    id:scr_manager
+    MainScreen:
+    LoginScreen:
+
+#### หน้า1 ####
+<MainScreen>:
+    name:"Scr1"
+    canvas.before:
+        Rectangle:
+            source:"img/capture.png"
+            size:root.width, root.height
+            pos:self.pos
+    Button:
+        text:"แปลงเลขฐาน"
+        size_hint: 0.30,0.20
+        pos_hint:{'center_x': 0.5,'center_y': 0.5}
+        font_name: "tahoma"
+        background_color:"4db6ac"
+        on_press : app.root.current = "Scr2"
+
+###### หน้า2 ######
+<LoginScreen>:
+    name:"Scr2"
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            cols:1
+            TextInput:
+                id: txt_number
+                hint_text : "txt_number"
+                font_size:20
+                input_filter :'int' #กำหนดเป็นตัวเลขเท่านั้น
+                size_hint:1,0.5
+            BoxLayout:
+                ToggleButton: 
+                    text : " base 2 " #ข้อความที่ปุ่ม
+                    font_name: "tahoma"
+                    group:'convert_mode' # จัดกลุ่ม
+                    background_color:"b2ebf2"
+                    on_press : root.convert(*args)
+                ToggleButton:
+                    text : " base 8 " #ข้อความที่ปุ่ม
+                    font_name: "tahoma"
+                    group:'convert_mode' # จัดกลุ่ม
+                    background_color:"ffeb3b"
+                    on_press : root.convert(*args)
+                ToggleButton:
+                    text : " base 16 " #ข้อความที่ปุ่ม
+                    font_name: "tahoma"
+                    group:'convert_mode' # จัดกลุ่ม
+                    background_color:"ff5722"
+                    on_press : root.convert(*args)
+            Label:
+                id: lbl_output
+                text:"lbl_output"
+                size_hint: 1,1
+                font_size:20
