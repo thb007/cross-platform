@@ -1,0 +1,27 @@
+<UI>:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout: #ส่วนบน
+            id: spinner_box
+            orientation: "horizontal"
+            Spinner:
+                id: spin1 
+                text: "please select"
+                values: ("Python", "php", "html", "spl", "c++","c")
+                background_color: (39, 245, 106, 0.8)
+                size_hint: (.5, .4)
+                pos_hint: {'top': 1} #x นอน, y ตั้ง
+            Label:
+                id: lbl_output
+                text: "You Selected:{}".format(spin1.text) #เอามาจาก Spinner เพื่อแสดงผล ใน Label
+                pos_hint: {'top': 1, 'x': .4}
+
+        BoxLayout: #ส่วนล่าง
+            id: add_box
+            Label:
+                text:"Add Language"
+            TextInput:
+                id: t1
+            Button:
+                text: "Add"
+                on_press: root.add_item()
