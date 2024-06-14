@@ -1,0 +1,111 @@
+<UI>:
+    MainScreen:
+    LoginScreen:
+
+#### หน้า1 ####
+<MainScreen>:
+    name: "Scr1"
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.753, 0.604, 0.820, 1 # สีพื้นหลัง สีม่วงอ่อน
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1   
+            Image:  # layer1
+                source: "img/DLT.png"
+            Button:
+                text: "เข้าสู่ระบบ"
+                size_hint: 0.30, 0.20
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                font_name: "tahoma"
+                background_color: 1, 0.843, 0, 1 # ค่าสี RGBa สำหรับปุ่ม
+                on_press: app.root.current = "Scr2"
+            Button:
+                text: "ลงทะเบียนใหม่"
+                size_hint: 0.30, 0.20
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                font_name: "tahoma"
+                background_color: 0.6, 0.4, 0.8, 1  # ค่าสี RGBa สำหรับปุ่ม
+                on_press: app.root.current = "Scr2"
+            Button:
+                text: "For Foreigner"
+                size_hint: 0.30, 0.20
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                font_name: "tahoma"
+                background_color: 0.263, 0.576, 0.784, 1   # ค่าสี RGBa สำหรับปุ่ม
+                on_press: app.root.current = "Scr2"
+
+###### หน้า2 ######
+<LoginScreen>:
+    name: "Scr2"
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.753, 0.604, 0.820, 1 # สีพื้นหลัง สีม่วงอ่อน
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1   
+            Image:  # layer1
+                source: "img/DLT.png"
+            Label:
+                text: 'ระบบการอบรมใบอนุญาตขับรถ'
+                font_size: 18
+                font_name: "tahoma"
+                color: 0, 0, 0
+                size_hint: 0.5, 0.5
+            Label:
+                text: 'ลงทะเบียนเข้ารับการอบรม'
+                font_size: 16
+                font_name: "tahoma"
+                color: 0, 0, 0
+                size_hint: 0.5, 0.5
+            TextInput:
+                id: TNP1
+                hint_text: "ระบุเลขบัตรประชาชน"
+                font_name: "tahoma"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5}
+                input_filter: 'int'
+                on_text: if len(self.text) > 13: self.text = self.text[:13]
+            TextInput:
+                id: TNP2
+                hint_text: "ระบุเลขบัตรประชาชนอีกครั้ง"
+                font_name: "tahoma"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5}
+                input_filter: 'int'
+                on_text: if len(self.text) > 13: self.text = self.text[:13]
+            TextInput:
+                id: phone_input
+                hint_text: "ระบุเบอร์โทรศัพท์"
+                font_name: "tahoma"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5}
+                input_filter: 'int'
+                on_text: if len(self.text) > 10: self.text = self.text[:10]
+            TextInput:
+                id: TNP4
+                hint_text: "ระบุอีเมล"
+                font_name: "tahoma"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5}
+            Button:
+                text: "ดำเนินการต่อ"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                font_name: "tahoma"
+                background_color: 0.6, 0.4, 0.8, 1   # ค่าสี RGBa สำหรับปุ่ม
+                on_press: root.check_inputs()
+            Button:
+                id: btn_regis
+                text: "ไม่พร้อมบันทึกข้อมูล"
+                font_name: "tahoma"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5}
